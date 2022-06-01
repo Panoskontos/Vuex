@@ -9,17 +9,13 @@
       {{ $store.state.counter }}
     </div>
 
+    <ButtonsView/>
+
     <div class="counter-squared">
       {{ $store.state.counter }}
       <sup>2</sup> = {{ $store.getters.squared }}
     </div>
 
-    <div class="buttons">
-      <!-- commit for mutations -->
-      <!-- dispatch for actions -->
-      <button @click="$store.commit('decrease')">-</button>
-      <button @click="$store.dispatch('increase')">+</button>
-    </div>
 
 
     <div>
@@ -36,12 +32,13 @@
 </template>
 
 <script>
+import ButtonsView from './components/ButtonsView.vue';
 // import ToDo from './components/ToDo.vue'
 
 export default {
   name: 'App',
   components: {
-    // ToDo,
+    ButtonsView
 },
 computed:{
   colorCode:{

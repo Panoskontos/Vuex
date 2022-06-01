@@ -2,26 +2,33 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
-        firstName: 'John',
-        lastName: 'Doe',
-        favorites: [],
-      },
+    // all components have access to this data
+    counter:0
+},
     mutations: {
-        UPDATE_FAVORITES(state, payload){
-            state.favorites =  payload
-        }
+    // change data in the state
+    // can't trigger asynccode
+    increase(state){
+        state.counter++;
     },
-    actions: {
-        addToFavorites(context, payload){
-            const favorites = context.state.favorites
-            favorites.push(payload)
-            context.commit('UPDATE_FAVORITES', favorites)
-        }
-    
-    },
-    getters: {
-        fullName: function (state) {
-            return `${state.firstName} ${state.lastName}`
-        }
+    decrease(state){
+        state.counter--;
     }
+},
+    actions: {
+    // We can have async code (API)
+    increase(){
+        console.log("increase (action)");
+    }
+    
+
+    },
+    getters:{
+        // get data from our state
+        
+    },
+    modules:{
+        // is for breaking the vuex in modules
+    }
+    
 })

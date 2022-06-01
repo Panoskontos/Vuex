@@ -4,7 +4,8 @@ import axios from 'axios'
 export default createStore({
     state: {
     // all components have access to this data
-    counter:0
+    counter:0,
+    colorCode: 'aqua',
 },
     mutations: {
     // change data in the state
@@ -14,6 +15,9 @@ export default createStore({
     },
     decrease(state){
         state.counter--;
+    },
+    changecolor(state, newcolor){
+        state.colorCode = newcolor;
     }
 },
     actions: {

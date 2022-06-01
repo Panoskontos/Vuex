@@ -2,7 +2,9 @@
   <div>
     <!-- <ToDo/> -->
 
-    <div class="counter">
+    <div class="counter"
+    :style="{ color: $store.state.colorCode}"
+    >
       <!-- {{counter}} -->
       {{ $store.state.counter }}
     </div>
@@ -19,6 +21,17 @@
       <button @click="$store.dispatch('increase')">+</button>
     </div>
 
+
+    <div>
+
+<br>
+<!-- Getters and Setters watch computed function -->
+      <input 
+      v-model="colorCode"
+      placeholder="Enter color code" type="text">
+    </div>
+
+
   </div>
 </template>
 
@@ -30,6 +43,17 @@ export default {
   components: {
     // ToDo,
 },
+computed:{
+  colorCode:{
+    get() {
+      return this.$store.state.colorCode
+    },
+    set(newValue) {
+      // send to mutation
+      this.$store.commit("changecolor",newValue);
+    }
+  }
+}
  
 }
 </script>
